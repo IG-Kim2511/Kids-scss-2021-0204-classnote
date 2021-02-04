@@ -1,3 +1,5 @@
+// ! menu
+
 .menu {
   width: 5rem;
   height: 4rem;
@@ -55,6 +57,8 @@
   }
 }
 
+// [navbar]
+
 .nav-list {
   display: flex;
   flex-direction: column;
@@ -81,6 +85,7 @@
   position: relative;
 
   a {
+    // css 102 ???
     $social-media-colors: (
       1: #ff0000,
       2: #1da1f2,
@@ -88,6 +93,7 @@
       4: #4c5fd7,
     );
 
+    // css 102  ???
     @for $i from 1 through 4 {
       &:nth-child(#{$i}) i {
         background-color: map-get($social-media-colors, $i);
@@ -115,6 +121,8 @@
   text-align: center;
   font-size: 1.8rem;
 }
+
+// [Section1]
 
 .section-1-heading {
   font-size: 30rem;
@@ -147,34 +155,17 @@
     color: $color-white;
     font-weight: 600;
     opacity: 0.8;
-    position: relative;
+    position: relative; /* css 019 */
+
+    //⭐css 023, inline속성에는 transform 적용안됨. span의 기본속성을 inline-block로 바꾸기
     display: inline-block;
 
-    &:nth-child(odd) {
-      transform: rotateZ(20deg);
-      border-bottom: 0.5rem solid $color-red;
-    }
-
-    &:nth-child(even) {
-      transform: rotateZ(-20deg);
-      border-bottom: 0.5rem solid $color-orange;
-    }
-
+    //  &::before~~~ , SASS pseudo-element 문법
+    // https://stackoverflow.com/questions/13608855/what-does-an-before-a-pseudo-element-in-css-mean
     &::before {
+      // css 018, @extend
       @extend %before-after;
       transform: translate(-0.5rem, -0.5rem);
-    }
-
-    &:hover::before {
-      transform: translate(-1rem, -1rem);
-    }
-
-    &:nth-child(odd)::before {
-      color: $color-orange;
-    }
-
-    &:nth-child(even)::before {
-      color: $color-red;
     }
 
     &::after {
@@ -183,16 +174,40 @@
       z-index: -1;
     }
 
-    &:hover::after {
-      transform: translate(1rem, 1rem);
+    // css 017 글자에 색 넣기
+    &:nth-child(odd)::before {
+      color: $color-orange;
     }
 
-    &:nth-child(odd)::after {
+    &:nth-child(even)::before {
       color: $color-red;
     }
 
-    &:nth-child(even)::after {
+    &:nth-child(odd)::after {
       color: $color-orange;
+    }
+
+    &:nth-child(even)::after {
+      color: $color-red;
+    }
+
+    // css 017 글자 밑에 line넣기
+    // css 023
+    &:nth-child(odd) {
+      transform: rotateZ(20deg);
+      border-bottom: 0.5rem solid $color-red;
+    }
+    &:nth-child(even) {
+      transform: rotateZ(-20deg);
+      border-bottom: 0.5rem solid $color-orange;
+    }
+
+    // css 024
+    &:hover:before {
+      transform: translate(-1rem, -1rem);
+    }
+    &:hover:after {
+      transform: translate(1rem, 1rem);
     }
   }
 }
@@ -214,6 +229,8 @@
   }
 }
 
+// [section-2]
+
 .card {
   height: 40rem;
   width: 30rem;
@@ -221,12 +238,14 @@
   @include flexLayout(space-around);
   flex-direction: column;
   box-shadow: 0.5rem 0.5rem 0 $color-white;
-  position: relative;
+  position: relative; //css 036
 
   @include response(lg) {
     margin: 5rem 0;
   }
 
+  //css 034,  &-heading = card-heading , 상위 클래스이름 card 그대로 이어서 만든다는 뜻
+  // https://css-tricks.com/the-sass-ampersand/
   &-heading {
     font-size: 3rem;
     color: $color-white;
@@ -234,6 +253,7 @@
     letter-spacing: 0.3rem;
   }
 
+  //css 034
   &-img {
     width: 25rem;
   }
@@ -241,6 +261,8 @@
   &-btn {
     @include flexLayout();
     flex-direction: column;
+
+    //css 036
     position: absolute;
     left: -2.5rem;
     padding: 1rem 0;
@@ -261,12 +283,21 @@
   .circle {
     width: 8rem;
     height: 8rem;
+
+    // js 045 밑에 change로 뺌
+    // width: 100%;
+    // height: 100%;
+
+    // css 039, transparentize( ~,  opacity) , 투명하게 하기
+
     background-color: transparentize($color-white, 0.3);
     border-radius: 50%;
     position: absolute;
     top: 0;
     right: 0;
     border: 0.3rem solid $color-cyan;
+
+    // js 045
     transition: all 0.5s 0.2s;
 
     &-content {
@@ -274,6 +305,8 @@
       height: 100%;
       @include flexLayout(space-evenly);
       flex-direction: column;
+
+      // js 045
       visibility: hidden;
       opacity: 0;
     }
@@ -299,6 +332,8 @@
   }
 }
 
+// js 045
+
 .change.card .circle {
   width: 100%;
   height: 100%;
@@ -306,19 +341,21 @@
   background-color: transparentize($color-white, 0.1);
 }
 
+// js 045
 .change .circle-content {
   visibility: visible;
   opacity: 1;
   transition: all 0.5s 0.7s;
 }
 
+// [section3]
 .advice {
   width: 80%;
   margin: 5rem 0;
   font-size: 5rem;
   color: $color-grey;
 
-  // css 113->base.scss 
+  // css 113->base.scss
 
   @include response(xl) {
     font-size: 4rem;

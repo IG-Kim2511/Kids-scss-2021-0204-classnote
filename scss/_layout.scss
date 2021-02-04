@@ -4,12 +4,9 @@
   height: 100vh;
   background-color: $color-orange;
   @include flexLayout(space-between);
-
-  
-  // css 105
   z-index: -100;
 
-  // js 111
+  // css 105
   &.change {
     z-index: 20;
   }
@@ -18,20 +15,16 @@
 .section-1 {
   height: 100vh;
 
-   // css 008, rgba($color-dark,0.5)
+  // css 008, rgba($color-dark,0.5)
   background: linear-gradient(rgba($color-dark, 0.5), rgba($color-dark, 0.4)),
     url(../images/bg.jpg) center no-repeat;
   background-size: cover;
-
-  
-  // @include
   @include flexLayout();
 }
 
 .section-2 {
   height: 100vh;
   background-color: $color-red;
-
   @include flexLayout(space-between); // css 031
   flex-direction: column;
   padding: 5rem 0 15rem 0;
@@ -43,7 +36,7 @@
 
 .cards-wrapper {
   width: 100%;
-  @include flexLayout(space-evenly);  // css 031 ($justify:center)
+  @include flexLayout(space-evenly); // css 031 ($justify:center)
 
   @include response(lg) {
     flex-direction: column;
@@ -63,6 +56,7 @@
   background-color: $color-green;
 }
 
+// css 105
 .footer {
   height: 100vh;
 }

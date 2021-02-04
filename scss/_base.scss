@@ -19,10 +19,18 @@ $color-grey: #555;
   align-items: $align;
 }
 
+
+//  css 018, @extend
 %before-after {
+    // css 017, data attribute in CSS
+  // https://gomakethings.com/how-to-access-and-use-data-attributes-in-your-css/
+  //  data-letter안의  글자를 추가함
   content: attr(data-letter);
-  position: absolute;
+  position: absolute; /* css 019 */
   left: 0;
+
+  
+  // css 024
   transition: transform 0.5s;
 }
 

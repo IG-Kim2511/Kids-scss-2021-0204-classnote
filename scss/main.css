@@ -1,6 +1,7 @@
 .section-1-heading span::before, .section-1-heading span::after {
   content: attr(data-letter);
   position: absolute;
+  /* css 019 */
   left: 0;
   -webkit-transition: -webkit-transform 0.5s;
   transition: -webkit-transform 0.5s;
@@ -365,7 +366,35 @@ html {
   font-weight: 600;
   opacity: 0.8;
   position: relative;
+  /* css 019 */
   display: inline-block;
+}
+
+.section-1-heading span::before {
+  -webkit-transform: translate(-0.5rem, -0.5rem);
+          transform: translate(-0.5rem, -0.5rem);
+}
+
+.section-1-heading span::after {
+  -webkit-transform: translate(0.5rem, 0.5rem);
+          transform: translate(0.5rem, 0.5rem);
+  z-index: -1;
+}
+
+.section-1-heading span:nth-child(odd)::before {
+  color: #ff9100;
+}
+
+.section-1-heading span:nth-child(even)::before {
+  color: #d64161;
+}
+
+.section-1-heading span:nth-child(odd)::after {
+  color: #ff9100;
+}
+
+.section-1-heading span:nth-child(even)::after {
+  color: #d64161;
 }
 
 .section-1-heading span:nth-child(odd) {
@@ -380,41 +409,14 @@ html {
   border-bottom: 0.5rem solid #ff9100;
 }
 
-.section-1-heading span::before {
-  -webkit-transform: translate(-0.5rem, -0.5rem);
-          transform: translate(-0.5rem, -0.5rem);
-}
-
-.section-1-heading span:hover::before {
+.section-1-heading span:hover:before {
   -webkit-transform: translate(-1rem, -1rem);
           transform: translate(-1rem, -1rem);
 }
 
-.section-1-heading span:nth-child(odd)::before {
-  color: #ff9100;
-}
-
-.section-1-heading span:nth-child(even)::before {
-  color: #d64161;
-}
-
-.section-1-heading span::after {
-  -webkit-transform: translate(0.5rem, 0.5rem);
-          transform: translate(0.5rem, 0.5rem);
-  z-index: -1;
-}
-
-.section-1-heading span:hover::after {
+.section-1-heading span:hover:after {
   -webkit-transform: translate(1rem, 1rem);
           transform: translate(1rem, 1rem);
-}
-
-.section-1-heading span:nth-child(odd)::after {
-  color: #d64161;
-}
-
-.section-1-heading span:nth-child(even)::after {
-  color: #ff9100;
 }
 
 .section-heading {
